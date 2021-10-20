@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import telegram
+from datetime import datetime
 
 my_token = '2062236097:AAEbmTzXP0b0gl4BKlHGMuqH2gKqqXyOMlc'
 bot = telegram.Bot(token = my_token)
@@ -13,3 +14,7 @@ soup = BeautifulSoup(html, 'html.parser')
 list = soup.select('.info-hall')
 if '듄' in html and 'IMAX' in str(list):
     bot.sendMessage(chat_id = chat_id, text = "예매 가능")
+
+else:
+    if(now.hour == 6 and now.minute==5):
+        bot.sendMessage(chat_id = chat_id, text = "알리미 정상 작동")
